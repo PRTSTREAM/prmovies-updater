@@ -1,0 +1,27 @@
+name: Update Prmovies Domain
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # Har 6 ghante mein chalega
+  workflow_dispatch:          # Manual button se chalane ke liye
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run domain updater
+        env:
+          FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+          FIREBASE_DB_SECRET: ${{ secrets.FIREBASE_DB_SECRET }}
+        run: python update_domain.py
