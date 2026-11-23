@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 DB_URL = os.environ["FIREBASE_DB_URL"].rstrip("/")
 DB_SECRET = os.environ.get("FIREBASE_DB_SECRET", "").strip()
 WORKER_URL = "https://bold-darkness-d959.poonamchouhan076.workers.dev/?site="
-FIREBASE_NODE = "Watchomovies/Domain"
+FIREBASE_NODE = "Watchmovies/Domain"
 
 
 def firebase_url(path: str) -> str:
